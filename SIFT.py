@@ -11,10 +11,16 @@ import sys
 from functools import reduce
 from PIL import Image
 
+
 from gaussian_blur import make_space
+from find_mm import find_mm
+from DoG import DoG
+
 
 if __name__ == "__main__":
     '''
+
+    
     1. "scale space" 만들기
     2. Difference of Gaussian(DoG) 연산
     3. keypoint들 찾기
@@ -26,4 +32,8 @@ if __name__ == "__main__":
     # img_path ='imgs/img1.ppm'
     # octaves = make_space(img_path)
     blur_octaves = np.load('blur_result/blur_image_array.npy', allow_pickle=True)
-    DoG_octaves = DoG(blur_octaves)
+    
+    # DoG_octaves = DoG(blur_octaves)
+    DoG_octaves = np.load('DoG_result/DoG_result_array.npy', allow_pickle=True)
+    # max_min_octaves = find_max_min(octaves)
+    mm_check_img = find_mm(DoG_octaves)
