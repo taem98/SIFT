@@ -47,11 +47,11 @@ def blur(octaves):
         blur_img_3 = np.zeros((row-size+1, col-size+1))
         blur_img_4 = np.zeros((row-size+1, col-size+1))
         blur_img_5 = np.zeros((row-size+1, col-size+1))
-        kerner_1 = gaussian_filter(size, 2**(-1/2)*(1/2)*(k+1))
-        kerner_2 = gaussian_filter(size, 2**(-1/2)*(k+1))
-        kerner_3 = gaussian_filter(size, 1*(k+1))
-        kerner_4 = gaussian_filter(size, 2**(1/2)*(k+1))
-        kerner_5 = gaussian_filter(size, 2*(k+1))
+        kerner_1 = gaussian_filter(size, 1*(k+1))
+        kerner_2 = gaussian_filter(size, 2**(1/2)*(k+1))
+        kerner_3 = gaussian_filter(size, 2*(k+1))
+        kerner_4 = gaussian_filter(size, 2*2**(1/2)*(k+1))
+        kerner_5 = gaussian_filter(size, 4*(k+1))
 
         op_mul = lambda x,y : operator.mul(x,y)
         for i in range(pd, row-pd):
@@ -86,7 +86,7 @@ def make_space(img_path):
     octave_2 = np.array(img)
     octave_3 = np.array(cv.resize(img, (height//2, width//2)))
     octave_4 = np.array(cv.resize(img, (height//4, width//4)))
-
+    
     octaves = [octave_1, octave_2, octave_3, octave_4]
 
     # make blur img
