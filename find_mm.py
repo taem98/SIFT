@@ -14,12 +14,12 @@ def check_mm(img_1, img_2, img_3):
             p_s = np.array([img_1[i-1:i+2, j-1:j+2],
                                     img_2[i-1:i+2, j-1:j+2],
                                     img_3[i-1:i+2, j-1:j+2]])
+
             if center >= p_s.max():
                 mm_check_img[i-1][j-1] = 0
             elif center <= p_s.min():
                 mm_check_img[i-1][j-1] = 0
-            print(p_s)
-
+            
     return mm_check_img
 
 def find_mm(octaves):
